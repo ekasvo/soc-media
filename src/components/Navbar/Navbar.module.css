@@ -1,0 +1,48 @@
+.navbar {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Rubik', sans-serif;
+    width: 25%;
+    margin: 20px 20px 0 0;
+    background-color: #856073;
+    padding: 30px;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #FCFCFB;
+    font-size: 28px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Rubik', sans-serif;
+}
+
+.navbar h3 {
+    color: #EDE8E3;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 130px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+
+.navbar ul li a:hover {
+    color: #CFC8D6;
+}
+
+.best_friends {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.best_friends img {
+    width: 60px;
+    padding: 8px;
+}

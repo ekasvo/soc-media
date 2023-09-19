@@ -1,0 +1,21 @@
+.create_post {
+    width: 80%;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.create_post textarea {
+    min-height: 65px;
+    color: #574E64;
+}
+
+.create_post button{
+    width: 100px;
+    margin-top: 15px;
+}
+
+.posts {
+    overflow-y: scroll;
+    width: 80%;
+}
