@@ -29,15 +29,15 @@
 }
 
 .active {
-    background-color: #A78E9A;
-    color: #574E64 !important;
+    box-shadow: 0px 12.54700756072998px 22.584613800048828px 0px rgba(110, 87, 108, 0.4);
+    box-shadow: 0px 2.509401559829712px 15.05640983581543px 0px rgba(110, 87, 108, 0.3);
+    border: none !important;
 }
 
 .friend a {
     text-decoration: none;
     font-weight: 500;
     color: #574E64;
-    border: 1px solid #CFC8D6;
     border-radius: 8px;
     width: 100%;
     padding: 10px 15px;
@@ -48,6 +48,7 @@
 
 .friend a:hover {
     color: #C9A99C;
+    border: 1px solid #CFC8D6;
 }
 
 .friend a img {
@@ -60,13 +61,18 @@
     align-self: center;
     height: 400px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 90%;
     justify-items: left;
     grid-column: 2/3;
     grid-row: 2/3;
-    border: 1px solid #CFC8D6;
+    /*border: 1px solid #CFC8D6;*/
     border-radius: 5%;
+    box-shadow: 0px 12.54700756072998px 22.584613800048828px 0px rgba(110, 87, 108, 0.2);
+    box-shadow: 0px 2.509401559829712px 15.05640983581543px 0px rgba(110, 87, 108, 0.3);
 }
 
+.chat textarea {
+    margin-top: 15px;
+}
 

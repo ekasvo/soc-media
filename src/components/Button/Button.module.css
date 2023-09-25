@@ -1,0 +1,17 @@
+.primary {
+    width: 120px;
+    background-color: #856073;
+    color: #EDE8E3;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    align-self: flex-end;
+}
+
+.primary:hover {
+    color: #CFC8D6;
+}

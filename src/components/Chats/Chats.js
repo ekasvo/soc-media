@@ -2,8 +2,12 @@ import React from "react";
 import ChatItem from "./Chat/ChatItem";
 import Message from "./Chat/Message";
 import styles from "./Chats.module.css";
+import Button from "../Button/Button";
 
 const Chats = ({chatsPageState}) => {
+    let handleSentMessage = () => {
+        alert('send');
+    }
     return (
         <div className={styles.container}>
             <div className={styles.heading}>
@@ -17,6 +21,8 @@ const Chats = ({chatsPageState}) => {
                 })}
             </div>
             <div className={styles.chat}>
+                <Button className='primary'>Sent</Button>
+                <textarea onClick={handleSentMessage} placeholder="Hey! What's up"></textarea>
                 {chatsPageState.chats && chatsPageState.chats.map(chat => {
                     return (
                         <Message message={chat.message} id={chat.id}/>

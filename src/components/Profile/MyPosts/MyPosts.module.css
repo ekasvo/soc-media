@@ -10,10 +10,9 @@
     color: #574E64;
 }
 
-.create_post button{
-    width: 100px;
-    margin-top: 15px;
-}
+/*.create_post button{*/
+    /*align-self: flex-end;*/
+/*}*/
 
 .posts {
     overflow-y: scroll;

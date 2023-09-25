@@ -7,8 +7,9 @@ import Chats from "./components/Chats/Chats";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
+import {updateNewPostText} from "./redux/state";
 
-function App({appState}) {
+function App({appState, addPost, updateNewPostText }) {
     return (
         <div>
             <Header/>
@@ -16,7 +17,12 @@ function App({appState}) {
                 <Navbar avatars={appState.sideBar.friendsList}/>
                 <div className='page-wrapper'>
                     <Routes>
-                        <Route path='/profile' element={<Profile profilePageState={appState.profilePage}/>}/>
+                        <Route path='/profile'
+                               element={<Profile profilePageState={appState.profilePage}
+                                                 addPost={addPost}
+                                                 updateNewPostText={updateNewPostText}
+                               />}
+                        />
                         <Route path='/chats/*' element={<Chats chatsPageState={appState.chatsPage}/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
