@@ -7,9 +7,8 @@ import Chats from "./components/Chats/Chats";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
-import {updateNewPostText} from "./redux/state";
 
-function App({appState, addPost, updateNewPostText }) {
+function App({appState, dispatch }) {
     return (
         <div>
             <Header/>
@@ -19,8 +18,7 @@ function App({appState, addPost, updateNewPostText }) {
                     <Routes>
                         <Route path='/profile'
                                element={<Profile profilePageState={appState.profilePage}
-                                                 addPost={addPost}
-                                                 updateNewPostText={updateNewPostText}
+                                                 dispatch={dispatch}
                                />}
                         />
                         <Route path='/chats/*' element={<Chats chatsPageState={appState.chatsPage}/>}/>

@@ -3,13 +3,12 @@ import MyPosts from "./MyPosts/MyPosts";
 import styles from "./Profile.module.css";
 import avatarMonica from '../../images/avatarMonica.jpg';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {updateNewPostText} from "../../redux/state";
 
-const Profile = ({profilePageState, addPost, updateNewPostText}) => {
+const Profile = ({profilePageState,dispatch}) => {
     return (
         <div className={styles.profile}>
             <ProfileInfo image={avatarMonica}/>
-            <MyPosts profilePageState={profilePageState} addPost={addPost} updateNewPostText={updateNewPostText}/>
+            <MyPosts profilePageState={profilePageState} dispatch={dispatch}/>
         </div>
     )
 }

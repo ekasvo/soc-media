@@ -4,16 +4,14 @@ import styles from "./MyPosts.module.css";
 import Button from "../../Button/Button";
 
 
-const MyPosts = ({profilePageState, addPost, updateNewPostText}) => {
+const MyPosts = ({profilePageState, dispatch}) => {
     let postData = createRef()
     let handleAddPost = () => {
-        let text = postData.current.value;
-        addPost(text);
-        postData.current.value = '';
+        dispatch({type: 'ADD-POST'});
     }
     let onPostChange = () => {
         let text = postData.current.value;
-        updateNewPostText(text);
+        dispatch({type: 'UPDATE-NEW-POST-TEXT', newPostText: text});
     }
 
     return (
