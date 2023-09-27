@@ -2,16 +2,18 @@ import React, {createRef} from "react";
 import Post from "./Post/Post";
 import styles from "./MyPosts.module.css";
 import Button from "../../Button/Button";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
 
 
 const MyPosts = ({profilePageState, dispatch}) => {
     let postData = createRef()
     let handleAddPost = () => {
-        dispatch({type: 'ADD-POST'});
+        dispatch(addPostActionCreator());
     }
     let onPostChange = () => {
         let text = postData.current.value;
-        dispatch({type: 'UPDATE-NEW-POST-TEXT', newPostText: text});
+        let action = updateNewPostTextActionCreator(text)
+        dispatch(action);
     }
 
     return (
