@@ -8,7 +8,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 
-function App({appState, dispatch }) {
+function App({appState, dispatch}) {
     return (
         <div>
             <Header/>
@@ -21,7 +21,10 @@ function App({appState, dispatch }) {
                                                  dispatch={dispatch}
                                />}
                         />
-                        <Route path='/chats/*' element={<Chats chatsPageState={appState.chatsPage}/>}/>
+                        <Route path='/chats/*' element={<Chats dispatch={dispatch}
+                                                               chatsPageState={appState.chatsPage}
+                                                         />}
+                        />
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>

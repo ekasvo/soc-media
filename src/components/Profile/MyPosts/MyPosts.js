@@ -2,7 +2,7 @@ import React, {createRef} from "react";
 import Post from "./Post/Post";
 import styles from "./MyPosts.module.css";
 import Button from "../../Button/Button";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profileReducer";
 
 
 const MyPosts = ({profilePageState, dispatch}) => {

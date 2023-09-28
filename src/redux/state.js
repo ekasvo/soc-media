@@ -4,9 +4,9 @@ import avatarChandler from "../images/avatarChandler.jpg";
 import avatarRoss from "../images/avatarRoss.jpg";
 import avatarPhoebe from "../images/avatarPhoebe.jpg";
 import avatarJoye from "../images/avatarJoye.jpg";
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+import profileReducer from "./profileReducer";
+import sideBarReducer from "./sideBarReducer";
+import chatsReducer from "./chatsReducer";
 
 export let store = {
     _state: {
@@ -25,19 +25,19 @@ export let store = {
             newPostText: 'Friends!!',
         },
         chatsPage: {
-            chatsWithUsers: [{id: 1, name: 'Rachel', avatarImage: avatarRachel}, {
-                id: 2,
-                name: 'Chandler',
-                avatarImage: avatarChandler
-            }, {id: 3, name: 'Ross', avatarImage: avatarRoss}, {id: 4, name: 'Phoebe', avatarImage: avatarPhoebe}, {
-                id: 5,
-                name: 'Joye',
-                avatarImage: avatarJoye
-            },],
-            chats: [{id: 1, message: 'Hey! How are you doing?'}, {
-                id: 2,
-                message: 'Hey! I am good, what about you?'
-            }, {id: 3, message: 'Same'}],
+            chatsWithUsers: [
+                {id: 1, name: 'Rachel', avatarImage: avatarRachel},
+                {id: 2, name: 'Chandler', avatarImage: avatarChandler},
+                {id: 3, name: 'Ross', avatarImage: avatarRoss},
+                {id: 4, name: 'Phoebe', avatarImage: avatarPhoebe},
+                {id: 5, name: 'Joye', avatarImage: avatarJoye},
+            ],
+            chats: [
+                {id: 1, message: 'Hey! How are you doing?'},
+                {id: 2, message: 'Hey! I am good, what about you?'},
+                {id: 3, message: 'Same'}
+            ],
+            newMessageBody: '',
         },
         sideBar: {
             friendsList: [{id: 1, name: 'Rachel', avatarImage: avatarRachel}, {
@@ -61,23 +61,12 @@ export let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                avatar: avatarMonica,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newPostText;
-            this._callSubscriber(this._state);
-        }
-    },
-}
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.chatsPage = chatsReducer(this._state.chatsPage, action);
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action);
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) =>
-    ({type: UPDATE_NEW_POST_TEXT, newPostText: text})
+        this._callSubscriber(this._state);
+    },
+};
+
+window.store = store;
