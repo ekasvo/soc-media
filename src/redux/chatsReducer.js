@@ -24,15 +24,20 @@ let initialState = {
 }
 
 const chatsReducer = (state = initialState, action) => {
-    if (action.type === SEND_MESSAGE) {
-        let messageBody = state.newMessageBody
-        state.chats.push({id: 6, message: messageBody});
-        state.newMessageBody = '';
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-        state.newMessageBody = action.newMessage;
+    switch (action.type) {
+        case SEND_MESSAGE:
+            let messageBody = state.newMessageBody
+            state.chats.push({id: 6, message: messageBody});
+            state.newMessageBody = '';
+            return state;
+        case UPDATE_NEW_MESSAGE_BODY:
+            state.newMessageBody = action.newMessage;
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
+
 export const sendMessageCreator = () => ({type: SEND_MESSAGE});
 export const updateNewMessageBodyCreator = (body) =>
     ({type: UPDATE_NEW_MESSAGE_BODY, newMessage: body});
