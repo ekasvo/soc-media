@@ -68,5 +68,3 @@ export let store = {
         this._callSubscriber();
     },
 };
-
-window.store = store;

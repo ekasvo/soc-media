@@ -4,7 +4,7 @@ import Message from "./Chat/Message";
 import styles from "./Chats.module.css";
 import Button from "../Button/Button";
 
-const Chats = ({chatsWithUsers, chats, newMessageBody, onSendMessageClick, newMessageChange}) => {
+const Chats = ({chatsPage, onSendMessageClick, newMessageChange}) => {
 
     let onNewMessageChange = (e) => {
         let newMessage = e.target.value;
@@ -17,7 +17,7 @@ const Chats = ({chatsWithUsers, chats, newMessageBody, onSendMessageClick, newMe
                 <h3>Chats</h3>
             </div>
             <div className={styles.friend}>
-                {chatsWithUsers && chatsWithUsers.map(userChat => {
+                {chatsPage.chatsWithUsers && chatsPage.chatsWithUsers.map(userChat => {
                     return (
                         <ChatItem name={userChat.name} id={userChat.id} avatarImage={userChat.avatarImage}/>
                     )
@@ -25,7 +25,7 @@ const Chats = ({chatsWithUsers, chats, newMessageBody, onSendMessageClick, newMe
             </div>
             <div className={styles.chat}>
                 <div className={styles.chats_body}>
-                    {chats && chats.map(chat => {
+                    {chatsPage.chats && chatsPage.chats.map(chat => {
                         return (
                             <Message message={chat.message} id={chat.id}/>
                         )
@@ -33,7 +33,7 @@ const Chats = ({chatsWithUsers, chats, newMessageBody, onSendMessageClick, newMe
                 </div>
                 <div className={styles.send_new_message}>
                     <textarea onChange={onNewMessageChange}
-                              value={newMessageBody}
+                              value={chatsPage.newMessageBody}
                               placeholder="Hey! What's up"
                     ></textarea>
                     <Button onClick={onSendMessageClick} className='primary'>Send</Button>

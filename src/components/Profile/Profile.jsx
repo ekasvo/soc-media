@@ -4,11 +4,11 @@ import avatarMonica from '../../images/avatarMonica.jpg';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({store}) => {
+const Profile = () => {
     return (
         <div className={styles.profile}>
             <ProfileInfo image={avatarMonica}/>
-            <MyPostsContainer store={store}/>
+            <MyPostsContainer />
         </div>
     )
 }

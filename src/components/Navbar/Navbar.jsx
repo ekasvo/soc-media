@@ -2,8 +2,21 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import Circle from "../Circle/Circle";
 import styles from './Navbar.module.css';
+import avatarRachel from "../../images/avatarRachel.jpg";
+import avatarChandler from "../../images/avatarChandler.jpg";
+import avatarRoss from "../../images/avatarRoss.jpg";
+import avatarPhoebe from "../../images/avatarPhoebe.jpg";
+import avatarJoye from "../../images/avatarJoye.jpg";
 
-const Navbar = ({avatars}) => {
+const friendsList = [
+    {id: 1, name: 'Rachel', avatarImage: avatarRachel},
+    {id: 2, name: 'Chandler', avatarImage: avatarChandler},
+    {id: 3, name: 'Ross', avatarImage: avatarRoss},
+    {id: 4, name: 'Phoebe', avatarImage: avatarPhoebe},
+    {id: 5, name: 'Joye', avatarImage: avatarJoye}
+]
+
+const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             <ul>
@@ -37,7 +50,7 @@ const Navbar = ({avatars}) => {
 
             <h3>Friends</h3>
             <div className={styles.best_friends}>
-                {avatars && avatars.map(avatar =>
+                {friendsList && friendsList.map(avatar =>
                     <Circle img={avatar.avatarImage}/>
                 )}
             </div>

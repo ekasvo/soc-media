@@ -8,18 +8,16 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import ChatsContainer from "./components/Chats/ChatsContainer";
 
-function App({store}) {
+function App() {
     return (
         <div>
             <Header/>
             <main>
-                <Navbar avatars={store.getState().sideBar.friendsList}/>
+                <Navbar />
                 <div className='page-wrapper'>
                     <Routes>
-                        <Route path='/profile'
-                               element={<Profile store={store}/>}/>
-                        <Route path='/chats/*'
-                               element={<ChatsContainer store={store}/>}/>
+                        <Route path='/profile' element={<Profile />}/>
+                        <Route path='/chats/*' element={<ChatsContainer />}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
