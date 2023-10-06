@@ -46,12 +46,17 @@ const Navbar = () => {
                     className={navData => navData.isActive ? styles.active : ''}>
                     Settings
                 </NavLink></li>
+                <li><NavLink
+                    to='/users'
+                    className={navData => navData.isActive ? styles.active : ''}>
+                    Users
+                </NavLink></li>
             </ul>
 
             <h3>Friends</h3>
             <div className={styles.best_friends}>
                 {friendsList && friendsList.map(avatar =>
-                    <Circle img={avatar.avatarImage}/>
+                    <Circle key={avatar.id} img={avatar.avatarImage}/>
                 )}
             </div>
         </nav>)

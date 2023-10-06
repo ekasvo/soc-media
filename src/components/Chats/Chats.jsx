@@ -19,7 +19,7 @@ const Chats = ({chatsPage, onSendMessageClick, newMessageChange}) => {
             <div className={styles.friend}>
                 {chatsPage.chatsWithUsers && chatsPage.chatsWithUsers.map(userChat => {
                     return (
-                        <ChatItem name={userChat.name} id={userChat.id} avatarImage={userChat.avatarImage}/>
+                        <ChatItem key={userChat.id} name={userChat.name} id={userChat.id} avatarImage={userChat.avatarImage}/>
                     )
                 })}
             </div>
@@ -27,7 +27,7 @@ const Chats = ({chatsPage, onSendMessageClick, newMessageChange}) => {
                 <div className={styles.chats_body}>
                     {chatsPage.chats && chatsPage.chats.map(chat => {
                         return (
-                            <Message message={chat.message} id={chat.id}/>
+                            <Message key={chat.id} message={chat.message} id={chat.id}/>
                         )
                     })}
                 </div>

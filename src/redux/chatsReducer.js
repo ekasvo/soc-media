@@ -25,18 +25,18 @@ let initialState = {
 
 const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SEND_MESSAGE:{
-            let stateCopy = {...state};
+        case SEND_MESSAGE:
             let messageBody = state.newMessageBody;
-            stateCopy.chats.push({id: 6, message: messageBody});
-            stateCopy.newMessageBody = '';
-            return stateCopy;
-        }
-        case UPDATE_NEW_MESSAGE_BODY:{
-            let stateCopy = {...state};
-            stateCopy.newMessageBody = action.newMessage;
-            return stateCopy;
-        }
+            return {
+                ...state,
+                newMessageBody: '',
+                chats: [
+                    ...state.chats,
+                    {id: 6, message: messageBody}
+                ]
+            };
+        case UPDATE_NEW_MESSAGE_BODY:
+            return {...state, newMessageBody: action.newMessage}
         default:
             return state;
     }

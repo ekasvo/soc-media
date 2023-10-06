@@ -5,7 +5,7 @@ import Button from "../../Button/Button";
 
 const MyPosts = ({posts, newPostText, handleAddPost, postChange}) => {
     let postData = createRef();
-    let onPostChange = (e) => {
+    let onPostChange = () => {
         let text = postData.current.value;
         postChange(text);
     }
@@ -29,7 +29,7 @@ const MyPosts = ({posts, newPostText, handleAddPost, postChange}) => {
             <div className={styles.posts}>
                 {posts && posts.map(post => {
                     return (
-                        <Post avatar={post.avatar} id={post.id} message={post.message} likeCount={post.likeCount}/>
+                        <Post key={post.id} avatar={post.avatar} id={post.id} message={post.message} likeCount={post.likeCount}/>
                     )
                 })}
             </div>

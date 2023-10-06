@@ -15,3 +15,22 @@
 .primary:hover {
     color: #CFC8D6;
 }
+
+.secondary {
+    width: 120px;
+    background-color: #EDE8E3;
+    color: #856073;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #856073;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    align-self: flex-end;
+}
+
+.secondary:hover {
+    background-color: #CFC8D6;
+    color: #856073;
+}

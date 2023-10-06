@@ -1,0 +1,31 @@
+.user_container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+.avatar_image {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar_image img {
+    width: 100px;
+}
+
+.avatar_info {
+    width: 70%;
+    margin-left: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 12.54700756072998px 22.584613800048828px 0 rgba(110, 87, 108, 0.4);
+    box-shadow: 0 2.509401559829712px 15.05640983581543px 0 rgba(110, 87, 108, 0.3);
+    border-radius: 5%;
+}
+
+.avatar_info > :last-child {
+    margin-left: auto;
+}

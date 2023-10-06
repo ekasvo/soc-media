@@ -7,6 +7,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import ChatsContainer from "./components/Chats/ChatsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
+                        <Route path='/users' element={<UsersContainer/>}/>
                     </Routes>
                 </div>
             </main>
