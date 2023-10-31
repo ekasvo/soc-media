@@ -32,7 +32,7 @@ const
                         })
                 }
             case SET_STATE:
-                return {...state, users: [ ...state.users, ...action.users ]}
+                return {...state, users: [...action.users]}
             default:
                 return state;
         }
