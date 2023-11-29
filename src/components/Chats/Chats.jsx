@@ -5,7 +5,6 @@ import styles from "./Chats.module.css";
 import Button from "../Button/Button";
 
 const Chats = ({chatsPage, onSendMessageClick, newMessageChange}) => {
-
     let onNewMessageChange = (e) => {
         let newMessage = e.target.value;
         newMessageChange(newMessage);
