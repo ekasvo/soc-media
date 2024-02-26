@@ -14,8 +14,7 @@ let initialState = {
     isFetching: false,
 };
 
-const
-    usersReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
         switch (action.type) {
             case FOLLOW:
                 return {
@@ -51,11 +50,11 @@ const
                 return state;
         }
     }
-export const followAC = (userId) => ({type: FOLLOW, userId});
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
-export const setUsersAC = (users) => ({type: SET_STATE, users});
-export const setCurrentPageAC = (page) => ({type: SET_CURRENT_PAGE, page});
-export const setTotalUsersCountAC = (total) => ({type: SET_TOTAL_USERS_COUNT, total});
-export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const follow = (userId) => ({type: FOLLOW, userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const setUsers = (users) => ({type: SET_STATE, users});
+export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
+export const setTotalUsersCount = (total) => ({type: SET_TOTAL_USERS_COUNT, total});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export default usersReducer;

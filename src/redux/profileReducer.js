@@ -18,8 +18,7 @@ let initialState = {
     newPostText: 'Friends!!',
 };
 
-const
-    profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
         switch (action.type) {
             case ADD_POST:
                 let newPostText = {

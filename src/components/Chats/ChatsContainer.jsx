@@ -9,16 +9,19 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSendMessageClick: () => {
-            dispatch(sendMessageCreator());
-        },
-        newMessageChange: (newMessage) => {
-            dispatch(updateNewMessageBodyCreator(newMessage));
-        },
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onSendMessageClick: () => {
+//             dispatch(sendMessageCreator());
+//         },
+//         newMessageChange: (newMessage) => {
+//             dispatch(updateNewMessageBodyCreator(newMessage));
+//         },
+//     }
+// }
 
-const ChatsContainer = connect(mapStateToProps, mapDispatchToProps)(Chats)
+const ChatsContainer = connect(mapStateToProps, {
+    onSendMessageClick: sendMessageCreator,
+    newMessageChange: updateNewMessageBodyCreator
+})(Chats)
 export default ChatsContainer;
