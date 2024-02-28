@@ -3,6 +3,7 @@ import styles from "./Users.module.css";
 import Circle from "../Circle/Circle";
 import avatarRachel from "../../images/avatarRachel.jpg";
 import Button from "../Button/Button";
+import {NavLink} from "react-router-dom";
 
 let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follow, unfollow}) => {
 
@@ -20,7 +21,9 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
                     return (
                         <span className={currentPage === p && styles.selected_page}
                               onClick={() => onPageChanged(p)}
-                        >{p}</span>
+                        >
+                            {p}
+                        </span>
                     )
                 })}
 
@@ -29,7 +32,9 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
                 return (
                     <div key={user.id} className={styles.user_container}>
                         <div className={styles.avatar_image}>
-                            <Circle img={user.photos.small ?? avatarRachel}></Circle>
+                            <NavLink to={`profile/${user.id}`}>
+                                <Circle img={user.photos.small ?? avatarRachel}></Circle>
+                            </NavLink>
                             {user.following
                                 ? <Button className='secondary'
                                           onClick={() => unfollow(user.id)}>Unfollow</Button>

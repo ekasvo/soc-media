@@ -3,13 +3,18 @@ import styles from "./Profile.module.css";
 import avatarMonica from '../../images/avatarMonica.jpg';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import Preloader from "../common/Preloader";
 
-const Profile = () => {
+const Profile = ({profile}) => {
+
     return (
-        <div className={styles.profile}>
-            <ProfileInfo image={avatarMonica}/>
-            <MyPostsContainer />
-        </div>
+        !profile ?
+            <Preloader/>
+            :
+            <div className={styles.profile}>
+                <ProfileInfo profile={profile}/>
+                <MyPostsContainer/>
+            </div>
     )
 }
 
