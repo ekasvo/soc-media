@@ -32,7 +32,7 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
                 return (
                     <div key={user.id} className={styles.user_container}>
                         <div className={styles.avatar_image}>
-                            <NavLink to={`profile/${user.id}`}>
+                            <NavLink to={`/profile/${user.id}`}>
                                 <Circle img={user.photos.small ?? avatarRachel}></Circle>
                             </NavLink>
                             {user.following

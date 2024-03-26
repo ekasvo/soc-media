@@ -17,7 +17,7 @@ function App() {
                 <Navbar />
                 <div className='page-wrapper'>
                     <Routes>
-                        <Route path='/profile' element={<ProfileContainer />}/>
+                        <Route path='/profile/:id?' element={<ProfileContainer />}/>
                         <Route path='/chats/*' element={<ChatsContainer />}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
