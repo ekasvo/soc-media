@@ -18,3 +18,16 @@
     top: 15px;
     right: 15px;
 }
+
+.header .auth {
+    background-color: #856073;
+    width: 70px;
+    position: absolute;
+    right: 6px;
+    top: 35px;
+    text-align: center;
+}
+
+.header .auth a {
+    color: #EDE8E3;
+}
