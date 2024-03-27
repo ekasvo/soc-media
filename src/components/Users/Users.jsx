@@ -4,6 +4,7 @@ import Circle from "../Circle/Circle";
 import avatarRachel from "../../images/avatarRachel.jpg";
 import Button from "../Button/Button";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follow, unfollow}) => {
 
@@ -11,6 +12,28 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
+    }
+
+    const followApi = (id) => {
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
+            withCredentials: true,
+        })
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    follow(id)
+                }
+            });
+    }
+
+    const unfollowApi = (id) => {
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
+            withCredentials: true,
+        })
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    unfollow(id)
+                }
+            });
     }
 
     return (
@@ -26,7 +49,6 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
                         </span>
                     )
                 })}
-
             </div>
             {users && users.map(user => {
                 return (
@@ -35,11 +57,11 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
                             <NavLink to={`/profile/${user.id}`}>
                                 <Circle img={user.photos.small ?? avatarRachel}></Circle>
                             </NavLink>
-                            {user.following
+                            {user.followed
                                 ? <Button className='secondary'
-                                          onClick={() => unfollow(user.id)}>Unfollow</Button>
+                                          onClick={() => unfollowApi(user.id)}>Unfollow</Button>
                                 : <Button className='primary'
-                                          onClick={() => follow(user.id)}>Follow</Button>
+                                          onClick={() => followApi(user.id)}>Follow</Button>
                             }
                         </div>
                         <div className={styles.avatar_info}>
