@@ -6,7 +6,17 @@ import Button from "../Button/Button";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
 
-let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follow, unfollow}) => {
+let Users = ({
+                 totalUserCount,
+                 pageSize,
+                 onPageChanged,
+                 currentPage,
+                 users,
+                 follow,
+                 unfollow,
+                 followingProgress,
+                 toggleFollowingProgress
+             }) => {
 
     let pagesCount = Math.ceil(totalUserCount / pageSize);
     let pages = [];
@@ -15,20 +25,24 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
     }
 
     const doFollow = (id) => {
+        toggleFollowingProgress(true, id);
         usersAPI.followApi(id)
             .then(data => {
                 if (data.resultCode === 0) {
                     follow(id)
                 }
+                toggleFollowingProgress(false, id);
             });
     }
 
     const doUnfollow = (id) => {
+        toggleFollowingProgress(true, id);
         usersAPI.unfollowApi(id)
             .then(data => {
                 if (data.resultCode === 0) {
                     unfollow(id)
                 }
+                toggleFollowingProgress(false, id);
             });
     }
 
@@ -54,9 +68,10 @@ let Users = ({totalUserCount, pageSize, onPageChanged, currentPage, users, follo
                                 <Circle img={user.photos.small ?? avatarRachel}></Circle>
                             </NavLink>
                             {user.followed
-                                ? <Button className='secondary'
-                                          onClick={() => doUnfollow(user.id)}>Unfollow</Button>
-                                : <Button className='primary'
+                                ?
+                                <Button disabled={followingProgress.some(id => id === user.id)} className='secondary'
+                                        onClick={() => doUnfollow(user.id)}>Unfollow</Button>
+                                : <Button disabled={followingProgress.some(id => id === user.id)} className='primary'
                                           onClick={() => doFollow(user.id)}>Follow</Button>
                             }
                         </div>
