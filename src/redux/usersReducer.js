@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_STATE = 'SET-STATE';
@@ -59,12 +61,45 @@ const usersReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const follow = (userId) => ({type: FOLLOW, userId});
-export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_STATE, users});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalUsersCount = (total) => ({type: SET_TOTAL_USERS_COUNT, total});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleFollowingProgress = (isFetching, id) => ({type: TOGGLE_FOLLOWING_PROGRESS, isFetching, id});
+
+export const getUsers = (currentPage, pageSize) => (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    usersAPI.getUsers(currentPage, pageSize)
+        .then(data => {
+            dispatch(setCurrentPage(currentPage));
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        });
+}
+
+export const follow = (id) => (dispatch) => {
+    dispatch(toggleFollowingProgress(true, id));
+    usersAPI.followApi(id)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followSuccess(id));
+            }
+           dispatch(toggleFollowingProgress(false, id));
+        });
+}
+
+export const unfollow = (id) => (dispatch) => {
+    dispatch(toggleFollowingProgress(true, id));
+    usersAPI.unfollowApi(id)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowSuccess(id));
+            }
+           dispatch(toggleFollowingProgress(false, id));
+        });
+}
 
 export default usersReducer;

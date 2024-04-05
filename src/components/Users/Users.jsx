@@ -4,7 +4,6 @@ import Circle from "../Circle/Circle";
 import avatarRachel from "../../images/avatarRachel.jpg";
 import Button from "../Button/Button";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 let Users = ({
                  totalUserCount,
@@ -14,36 +13,13 @@ let Users = ({
                  users,
                  follow,
                  unfollow,
-                 followingProgress,
-                 toggleFollowingProgress
+                 followingProgress
              }) => {
 
     let pagesCount = Math.ceil(totalUserCount / pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
-    }
-
-    const doFollow = (id) => {
-        toggleFollowingProgress(true, id);
-        usersAPI.followApi(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    follow(id)
-                }
-                toggleFollowingProgress(false, id);
-            });
-    }
-
-    const doUnfollow = (id) => {
-        toggleFollowingProgress(true, id);
-        usersAPI.unfollowApi(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    unfollow(id)
-                }
-                toggleFollowingProgress(false, id);
-            });
     }
 
     return (
@@ -70,9 +46,9 @@ let Users = ({
                             {user.followed
                                 ?
                                 <Button disabled={followingProgress.some(id => id === user.id)} className='secondary'
-                                        onClick={() => doUnfollow(user.id)}>Unfollow</Button>
+                                        onClick={() => unfollow(user.id)}>Unfollow</Button>
                                 : <Button disabled={followingProgress.some(id => id === user.id)} className='primary'
-                                          onClick={() => doFollow(user.id)}>Follow</Button>
+                                          onClick={() => follow(user.id)}>Follow</Button>
                             }
                         </div>
                         <div className={styles.avatar_info}>

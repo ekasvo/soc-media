@@ -1,4 +1,5 @@
 import avatarMonica from "../images/avatarMonica.jpg";
+import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -55,5 +56,12 @@ export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (text) =>
     ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+
+export const getProfile = (userId) => (dispatch) =>{
+    profileAPI.getProfile(userId)
+        .then(data => {
+            dispatch(setUserProfile(data));
+        });
+}
 
 export default profileReducer;
