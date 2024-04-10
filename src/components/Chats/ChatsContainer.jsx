@@ -2,6 +2,7 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/chats
 import Chats from "./Chats";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,13 +10,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-let authRedirectComponent = withAuthRedirect(Chats)
-
-const ChatsContainer = connect(mapStateToProps, {
+export default compose(connect(mapStateToProps, {
     onSendMessageClick: sendMessageCreator,
     newMessageChange: updateNewMessageBodyCreator
-})(authRedirectComponent)
-export default ChatsContainer;
+}), withAuthRedirect)(Chats);
 
 
 // const mapDispatchToProps = (dispatch) => {
